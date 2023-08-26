@@ -1,0 +1,112 @@
+::-webkit-scrollbar {
+  width: 8px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body {
+  background-color: #eee;
+}
+.card-0 {
+  min-height: 110vh;
+  background: linear-gradient(-20deg, #fc7001 50%, #488ec1 50%);
+  color: white;
+  border: 0px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+p {
+  font-size: 15px;
+  line-height: 25px !important;
+  font-weight: 500;
+}
+.container {
+  padding-top: 100px !important;
+  border-radius: 20px;
+}
+.btn {
+  letter-spacing: 1px;
+}
+
+label {
+  margin-bottom: 2px;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.form-control {
+  height: calc(2em + 0.75rem + 3px);
+}
+.inner-card {
+  margin: 79px 0px 70px 0px;
+}
+
+.card-1 {
+  border-radius: 17px;
+  color: black;
+  box-shadow: 2px 4px 15px 0px rgb(0, 0, 0, 0.5) !important;
+}
+
+.radio:hover {
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.radio.selected {
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.4);
+}
+
+.radio-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.radio {
+    display:inline-block;
+    width: 204;
+    height: 64;
+    border-radius: 0;
+    background: lightblue;
+    box-sizing: border-box;
+    border: 2px solid lightgrey;
+    cursor:pointer;
+    margin: 8px 25px 8px 0px; 
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+
+.radio-group input[type="radio"]:checked + img {
+    border-color: blue;
+}
+
+.radio-group label {
+    display: inline-block;
+    margin-right: 10px;
+    width: 150px;
+}
+
+
+.radio-group input[type="radio"] + img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+
+

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="{{ asset('assets/img/sopay.png') }}">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
+
+		{# Feuilles de styles #}
+		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"> {% block stylesheets %}{% endblock %}
+		<link
+		rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
+
+		{# Fichiers Js #}
+		<script type='text/javascript' src="{{asset('assets/js/jquery.min.js')}}" defer></script>
+		<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" defer></script>
+		{% block javascripts %}{% endblock %}
+		<script type='text/javascript' src="{{asset('assets/js/scripts.js')}}" defer></script>
+
+	</head>
+
+	{# {% block body %}{% endblock %} #}
+	<body classname="snippet-body">
+		<div class="container card-0 justify-content-center">
+			<div class="card-body px-sm-4 px-0">
+				<div class="row justify-content-center mb-5">
+					<div class="col-md-10 col">
+						<h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">
+							Checkout
+						</h3>
+					</div>
+				</div>
+				<div class="row justify-content-center round">
+					<div class="col-lg-10 col-md-12">
+						<div class="card shadow-lg card-1">
+							<div class="card-body inner-card">
+								<div class="row justify-content-center">
+									<div class="col-lg-10 col-md-6 col-sm-12 ">
+										<form action={{path('sendToApi')}} method="POST">
+											<div class="row justify-content-end">
+												<h4 class="mb-3 text-center" style="color:#fc7001; font-weight:bold;">Transaction details</h4>
+												<p>
+													<strong>Amount</strong>
+													:
+													{{ amount }}
+													{{ currency }}
+												</p>
+												<p>
+													<strong>Description</strong>
+													:
+													{{ description }}
+												</p>
+												<p>
+													<strong>Order ID</strong>
+													:
+													{{ orderId }}
+												</p>
+											</div>
+											<div class="radio-group text-center">
+												<h4 class="mb-5" style="color:#fc7001; font-weight:bold;">Payment method</h4>
+
+												{% if service == '' %}
+													<div class="row">
+														<div class="col-lg-3 col-md-6 col-6 mb-4">
+															<label>
+																<input id="om" type="radio" name="radio-button" value="orange_money_CM">
+																<img src="{{ asset('assets/img/OM.png') }}" alt="om">
+															</label>
+														</div>
+														<div class="col-lg-3 col-md-6 col-6 mb-4">
+															<label>
+																<input id="mtn" type="radio" name="radio-button" value="mtn_mobile_money_CM">
+																<img src="{{ asset('assets/img/MTN.png') }}" alt="mtn">
+															</label>
+														</div>
+														<div class="col-lg-3 col-md-6 col-6 mb-4">
+															<label>
+																<input id="eu" type="radio" name="radio-button" value="express_union">
+																<img src="{{asset('assets/img/EU.png') }}" alt="eu">
+															</label>
+														</div>
+														<div class="col-lg-3 col-md-6 col-6 mb-4">
+															<label>
+																<input id="paypal" type="radio" name="radio-button" value="paypal">
+																<img src="{{ asset('assets/img/PAYPAL.png') }}" alt="paypal">
+															</label>
+														</div>
+														<div class="col-lg-3 col-md-6 col-6 mb-4">
+															<label>
+																<input id="pm" type="radio" name="radio-button" value="perfect_money">
+																<img src="{{ asset('assets/img/PM.png') }} " alt="pm">
+															</label>
+														</div>
+														<div class="col-lg-3 col-md-6 col-6 mb-4">
+															<label>
+																<input id="bitcoin" type="radio" name="radio-button" value="bitcoin">
+																<img src="{{asset('assets/img/BITCOIN.png') }}" alt="bitcoin">
+															</label>
+														</div>
+														<div class="col-lg-3 col-md-6 col-6 mb-4">
+															<label>
+																<input id="dogecoin" type="radio" name="radio-button" value="dogecoin">
+																<img src="{{asset('assets/img/DOGE.png') }}" alt="dogecoin">
+															</label>
+														</div>
+														<div class="col-lg-3 col-md-6 col-6 mb-4">
+															<label>
+																<input id="litecoin" type="radio" name="radio-button" value="litecoin">
+																<img src="{{asset('assets/img/LITE.png') }}" alt="litecoin">
+															</label>
+														</div>
+													</div>
+												{% else %}
+
+													{% if service == 'orange_money_CM' %}
+
+														<label class="mb-4">
+															<input id="om" type="radio" name="radio-button" value="orange_money_CM" checked>
+															<img src="{{ asset('assets/img/OM.png') }}" alt="om">
+														</label>
+
+													{% elseif service == 'mtn_mobile_money_CM' %}
+
+														<label class="mb-4">
+															<input id="mtn" type="radio" name="radio-button" value="mtn_mobile_money_CM" checked>
+															<img src="{{ asset('assets/img/MTN.png') }}" alt="mtn">
+														</label>
+
+													{% elseif service == 'express_union' %}
+
+														<label class="mb-4">
+															<input id="eu" type="radio" name="radio-button" value="express_union" checked>
+															<img src="{{asset('assets/img/EU.png') }}" alt="eu">
+														</label>
+
+													{% elseif service == 'paypal' %}
+														<label class="mb-4">
+															<input id="paypal" type="radio" name="radio-button" value="paypal" checked>
+															<img src="{{ asset('assets/img/PAYPAL.png') }}" alt="paypal">
+														</label>
+
+													{% elseif service == 'perfect_money' %}
+
+														<label class="mb-4">
+															<input id="pm" type="radio" name="radio-button" value="perfect_money" checked>
+															<img src="{{ asset('assets/img/PM.png') }} " alt="pm">
+														</label>
+
+													{% elseif service == 'bitcoin' %}
+
+														<label class="mb-4">
+															<input id="bitcoin" type="radio" name="radio-button" value="bitcoin" checked>
+															<img src="{{asset('assets/img/BITCOIN.png') }}" alt="bitcoin">
+														</label>
+
+													{% elseif service == 'dogecoin' %}
+														<label class="mb-4">
+															<input id="dogecoin" type="radio" name="radio-button" value="dogecoin" checked>
+															<img src="{{asset('assets/img/DOGE.png') }}" alt="dogecoin">
+														</label>
+
+													{% elseif service == 'litecoin' %}
+
+														<label class="mb-4">
+															<input id="litecoin" type="radio" name="radio-button" value="litecoin" checked>
+															<img src="{{asset('assets/img/LITE.png') }}" alt="litecoin">
+														</label>
+
+													{% endif %}
+
+												{% endif %}
+											</div>
+											<div id="phone_div" class="form-group justify-content-center text-center" hidden>
+												<label class="text-center" for="number">Phone number</label>
+												<input type="number" class="form-control rounded-pill w-75 mx-auto" id="number" name="number" placeholder="000-000-000-000" minlength="4">
+											</div>
+											<div id="email_div" class="form-group justify-content-center text-center" hidden>
+												<label for="email_paypal">Email Paypal</label>
+												<input type="email" class="form-control rounded-pill w-75 mx-auto" id="email_paypal" name="email_paypal" placeholder="xxxxxxx@example.com">
+											</div>
+
+											<div class="row justify-content-center">
+												<button type="submit" class="btn btn-primary btn-block mb-2 mt-4 rounded-pill  w-50 mx-auto">
+													<small class="font-weight-bold">Confirmer</small>
+													<span class="spinner-border spinner-border-sm ml-2 d-none" role="status" aria-hidden="true"></span>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+
+						const omRadio = document.getElementById('om');
+const mtnRadio = document.getElementById('mtn');
+const euRadio = document.getElementById('eu');
+const pmRadio = document.getElementById('pm');
+const paypalRadio = document.getElementById('paypal');
+const dogeRadio = document.getElementById('dogecoin');
+const liteRadio = document.getElementById('litecoin');
+const bitRadio = document.getElementById('bitcoin');
+const phoneDiv = document.getElementById('phone_div');
+const emailDiv = document.getElementById('email_div');
+
+function showInputDiv(inputDiv) {
+phone_div.hidden = true;
+email_div.hidden = true;
+inputDiv.hidden = false;
+}
+
+{% if service == 'orange_money_CM' %}showInputDiv(phone_div);
+omRadio.checked = true;
+{% elseif service == 'mtn_mobile_money_CM' %}showInputDiv(phone_div);
+mtnRadio.checked = true;
+{% elseif service == 'express_union' %}showInputDiv(phone_div);
+euRadio.checked = true;
+{% elseif service == 'paypal' %}showInputDiv(email_div);
+paypalRadio.checked = true;{% endif %}omRadio.addEventListener('change', () => {
+phoneDiv.hidden = false;
+emailDiv.hidden = true;
+});
+mtnRadio.addEventListener('change', () => {
+phoneDiv.hidden = false;
+emailDiv.hidden = true;
+});
+euRadio.addEventListener('change', () => {
+phoneDiv.hidden = false;
+emailDiv.hidden = true;
+});
+paypalRadio.addEventListener('change', () => {
+phoneDiv.hidden = true;
+emailDiv.hidden = false;
+});
+dogeRadio.addEventListener('change', () => {
+phoneDiv.hidden = true;
+emailDiv.hidden = true;
+});
+liteRadio.addEventListener('change', () => {
+phoneDiv.hidden = true;
+emailDiv.hidden = true;
+});
+bitRadio.addEventListener('change', () => {
+phoneDiv.hidden = true;
+emailDiv.hidden = true;
+});
+pmRadio.addEventListener('change', () => {
+phoneDiv.hidden = true;
+emailDiv.hidden = true;
+});
+
+const form = document.querySelector('form');
+const button = form.querySelector('button[type="submit"]');
+const spinner = button.querySelector('.spinner-border');
+
+form.addEventListener('submit', function () {
+button.setAttribute('disabled', 'disabled');
+spinner.classList.remove('d-none');
+});
+					</script>
+
+
+				</body>
+
+			</html>
+		</body>
+	</body>
+</html>
