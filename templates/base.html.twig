@@ -24,16 +24,9 @@
 	</head>
 
 	{# {% block body %}{% endblock %} #}
-	<body classname="snippet-body">
+	<body>
 		<div class="container card-0 justify-content-center">
 			<div class="card-body px-sm-4 px-0">
-				<div class="row justify-content-center mb-5">
-					<div class="col-md-10 col">
-						<h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">
-							Checkout
-						</h3>
-					</div>
-				</div>
 				<div class="row justify-content-center round">
 					<div class="col-lg-10 col-md-12">
 						<div class="card shadow-lg card-1">
@@ -43,6 +36,16 @@
 										<form action={{path('sendToApi')}} method="POST">
 											<div class="row justify-content-end">
 												<h4 class="mb-3 text-center" style="color:#fc7001; font-weight:bold;">Transaction details</h4>
+												<p>
+													<strong>Shop name</strong>
+													:
+													{{ shopname }}
+												</p>
+												<p>
+													<strong>Order ID</strong>
+													:
+													{{ orderId }}
+												</p>
 												<p>
 													<strong>Amount</strong>
 													:
@@ -54,11 +57,6 @@
 													:
 													{{ description }}
 												</p>
-												<p>
-													<strong>Order ID</strong>
-													:
-													{{ orderId }}
-												</p>
 											</div>
 											<div class="radio-group text-center">
 												<h4 class="mb-5" style="color:#fc7001; font-weight:bold;">Payment method</h4>
@@ -67,53 +65,55 @@
 													<div class="row">
 														<div class="col-lg-3 col-md-6 col-6 mb-4">
 															<label>
-																<input id="om" type="radio" name="radio-button" value="orange_money_CM">
+																<input id="om" type="radio" name="radio-button" value="orange_money_CM" >
 																<img src="{{ asset('assets/img/OM.png') }}" alt="om">
 															</label>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4">
 															<label>
-																<input id="mtn" type="radio" name="radio-button" value="mtn_mobile_money_CM">
+																<input id="mtn" type="radio" name="radio-button" value="mtn_mobile_money_CM" >
 																<img src="{{ asset('assets/img/MTN.png') }}" alt="mtn">
 															</label>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4">
 															<label>
-																<input id="eu" type="radio" name="radio-button" value="express_union">
+																<input id="eu" type="radio" name="radio-button" value="express_union" >
 																<img src="{{asset('assets/img/EU.png') }}" alt="eu">
 															</label>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4">
 															<label>
-																<input id="paypal" type="radio" name="radio-button" value="paypal">
+																<input id="paypal" type="radio" name="radio-button" value="paypal" >
 																<img src="{{ asset('assets/img/PAYPAL.png') }}" alt="paypal">
 															</label>
 														</div>
-														<div class="col-lg-3 col-md-6 col-6 mb-4">
+														<div class="col-lg-3 col-md-6 col-6 mb-4 collapse">
 															<label>
-																<input id="pm" type="radio" name="radio-button" value="perfect_money">
+																<input id="pm" type="radio" name="radio-button" value="perfect_money" >
 																<img src="{{ asset('assets/img/PM.png') }} " alt="pm">
 															</label>
 														</div>
-														<div class="col-lg-3 col-md-6 col-6 mb-4">
+														<div class="col-lg-3 col-md-6 col-6 mb-4 collapse">
 															<label>
-																<input id="bitcoin" type="radio" name="radio-button" value="bitcoin">
+																<input id="bitcoin" type="radio" name="radio-button" value="bitcoin" >
 																<img src="{{asset('assets/img/BITCOIN.png') }}" alt="bitcoin">
 															</label>
 														</div>
-														<div class="col-lg-3 col-md-6 col-6 mb-4">
+														<div class="col-lg-3 col-md-6 col-6 mb-4 collapse">
 															<label>
-																<input id="dogecoin" type="radio" name="radio-button" value="dogecoin">
+																<input id="dogecoin" type="radio" name="radio-button" value="dogecoin" >
 																<img src="{{asset('assets/img/DOGE.png') }}" alt="dogecoin">
 															</label>
 														</div>
-														<div class="col-lg-3 col-md-6 col-6 mb-4">
+														<div class="col-lg-3 col-md-6 col-6 mb-4 collapse">
 															<label>
-																<input id="litecoin" type="radio" name="radio-button" value="litecoin">
+																<input id="litecoin" type="radio" name="radio-button" value="litecoin" >
 																<img src="{{asset('assets/img/LITE.png') }}" alt="litecoin">
 															</label>
 														</div>
 													</div>
+													<a id="showMoreLink" href="#" onclick="showMoreElements()">Voir plus</a>
+
 												{% else %}
 
 													{% if service == 'orange_money_CM' %}
@@ -183,7 +183,7 @@
 												<input type="email" class="form-control rounded-pill w-75 mx-auto" id="email_paypal" name="email_paypal" placeholder="xxxxxxx@example.com">
 											</div>
 
-											<div class="row justify-content-center">
+											<div id="confirm" class="row justify-content-center">
 												<button type="submit" class="btn btn-primary btn-block mb-2 mt-4 rounded-pill  w-50 mx-auto">
 													<small class="font-weight-bold">Confirmer</small>
 													<span class="spinner-border spinner-border-sm ml-2 d-none" role="status" aria-hidden="true"></span>
@@ -195,9 +195,14 @@
 							</div>
 						</div>
 					</div>
-					<script>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
 
-						const omRadio = document.getElementById('om');
+	const omRadio = document.getElementById('om');
 const mtnRadio = document.getElementById('mtn');
 const euRadio = document.getElementById('eu');
 const pmRadio = document.getElementById('pm');
@@ -262,12 +267,29 @@ form.addEventListener('submit', function () {
 button.setAttribute('disabled', 'disabled');
 spinner.classList.remove('d-none');
 });
-					</script>
+
+function showMoreElements() {
+var elements = document.querySelectorAll('.row > div.collapse');
+
+for (var i = 0; i < elements.length; i++) {
+elements[i].classList.toggle('show');
+}
+
+var showMoreLink = document.getElementById('showMoreLink');
+if (showMoreLink.innerHTML === 'Voir plus') {
+showMoreLink.innerHTML = 'Voir moins';
+} else {
+showMoreLink.innerHTML = 'Voir plus';
+}
+}
 
 
-				</body>
-
-			</html>
-		</body>
-	</body>
-</html>
+var screenWidth = window.innerWidth || document.documentElement.clientWidth;
+if (screenWidth >= 768) {
+showMoreLink.innerHTML = 'Voir moins';
+var elements = document.querySelectorAll('.row > div');
+for (var i = 0; i < elements.length; i++) {
+elements[i].classList.add('show');
+}
+}
+</script>

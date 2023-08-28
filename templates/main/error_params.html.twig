@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			Soleaspay Checkout
+		</title>
+		<link rel="icon" href="{{ asset('assets/img/sopay.png') }}">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
+
+		{# Feuilles de styles #}
+		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"> {% block stylesheets %}{% endblock %}
+		<link
+		rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
+
+		{# Fichiers Js #}
+		<script type='text/javascript' src="{{asset('assets/js/jquery.min.js')}}" defer></script>
+		<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" defer></script>
+		{% block javascripts %}{% endblock %}
+		<script type='text/javascript' src="{{asset('assets/js/scripts.js')}}" defer></script>
+
+	</head>
+
+	{# {% block body %}{% endblock %} #}
+	<body>
+		<h1 class="text-danger">Error: Missing Parameters</h1>
+		{% if emptyElements is not empty %}
+			<p>The following parameters are empty:</p>
+			<ul>
+				{% for key, value in emptyElements %}
+					{% if value %}
+						<li>{{ key }}</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</body>
+</html>
+<html></html>

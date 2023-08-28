@@ -24,8 +24,6 @@ body {
   background: linear-gradient(-20deg, #fc7001 50%, #488ec1 50%);
   color: white;
   border: 0px;
-  margin-top: 100px;
-  margin-bottom: 100px;
 }
 p {
   font-size: 15px;
@@ -107,6 +105,8 @@ label {
     cursor: pointer;
     object-fit: contain;
 }
+
+
 
 
 

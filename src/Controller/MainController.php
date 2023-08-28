@@ -13,14 +13,48 @@ class MainController extends AbstractController
     #[Route('/checkout', name: 'checkout')]
     public function checkout(Request $request): Response
     {
-        $amount =  $request->request->get('amount');
-        $currency = $request->request->get('currency');
-        $description = $request->request->get('description');
-        $orderId = $request->request->get('orderId');
-        $apiKey = $request->request->get('apiKey');
-        $service = $request->request->get('service');
-        $successUrl = $request->request->get('successUrl');
-        $failureUrl = $request->request->get('failureUrl');
+        $content = $request->getContent();
+        $data = json_decode($content, true);
+
+        if (empty($data)) {
+            $data = $request->request->all();
+        }
+        $amount =   $data['amount'] ?? null;
+        $currency  = $data['currency'] ?? null;
+        $description  = $data['description'] ?? null;
+        $orderId = $data['orderId'] ?? null;
+        $apiKey  = $data['apiKey'] ?? null;
+        $service  = $data['service'] ?? null;
+        $successUrl  = $data['successUrl'] ?? null;
+        $failureUrl  = $data['failureUrl'] ?? null;
+        $shopname  = $data['shopname'] ?? null;
+
+
+        $emptyElements = [];
+
+        $elements = [
+            'amount' => $amount,
+            'currency' => $currency,
+            'description' => $description,
+            'orderId' => $orderId,
+            'apiKey' => $apiKey,
+            'shopname' => $shopname,
+            'successUrl' => $successUrl,
+            'failureUrl' => $failureUrl
+        ];
+
+        foreach ($elements as $key => $value) {
+            if (empty($value)) {
+                $emptyElements[$key] = true;
+            }
+        }
+
+        if (!empty($emptyElements)) {
+            return $this->render('main/error_params.html.twig', [
+                'emptyElements' => $emptyElements
+            ]);
+        }
+
 
         setcookie('amount', $amount);
         setcookie('currency', $currency);
@@ -30,13 +64,15 @@ class MainController extends AbstractController
         setcookie('service', $service);
         setcookie('successUrl', $successUrl);
         setcookie('failureUrl', $failureUrl);
+        setcookie('failureUrl', $shopname);
 
         return $this->render('main/index.html.twig', [
             'amount' => $amount,
             'description' => $description,
             'orderId' => $orderId,
             'currency' => $currency,
-            'service' => $service
+            'service' => $service,
+            'shopname' => $shopname
         ]);
     }
 
@@ -86,7 +122,6 @@ class MainController extends AbstractController
                     'order_id' => $_COOKIE['orderId'] ?? null,
                 ],
             ]);
-            
         }
 
         $responseContent = json_decode($response->getContent(), true);
@@ -97,8 +132,6 @@ class MainController extends AbstractController
             $redirectUrl = $_COOKIE['failureUrl'] ?? '/';
         }
 
-
         return $this->redirect($redirectUrl);
-        
     }
 }
