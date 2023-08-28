@@ -65,51 +65,59 @@
 													<div class="row">
 														<div class="col-lg-3 col-md-6 col-6 mb-4">
 															<label>
-																<input id="om" type="radio" name="radio-button" value="orange_money_CM" >
+																<input id="om" type="radio" name="radio-button" value="orange_money_CM">
 																<img src="{{ asset('assets/img/OM.png') }}" alt="om">
 															</label>
+															<small>Orange Money CM</small>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4">
 															<label>
-																<input id="mtn" type="radio" name="radio-button" value="mtn_mobile_money_CM" >
+																<input id="mtn" type="radio" name="radio-button" value="mtn_mobile_money_CM">
 																<img src="{{ asset('assets/img/MTN.png') }}" alt="mtn">
 															</label>
+															<small>MTN Mobile Money CM</small>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4">
 															<label>
-																<input id="eu" type="radio" name="radio-button" value="express_union" >
+																<input id="eu" type="radio" name="radio-button" value="express_union">
 																<img src="{{asset('assets/img/EU.png') }}" alt="eu">
 															</label>
+															<small>Express Union</small>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4">
 															<label>
-																<input id="paypal" type="radio" name="radio-button" value="paypal" >
+																<input id="paypal" type="radio" name="radio-button" value="paypal">
 																<img src="{{ asset('assets/img/PAYPAL.png') }}" alt="paypal">
 															</label>
+															<small>Paypal</small>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4 collapse">
 															<label>
-																<input id="pm" type="radio" name="radio-button" value="perfect_money" >
+																<input id="pm" type="radio" name="radio-button" value="perfect_money">
 																<img src="{{ asset('assets/img/PM.png') }} " alt="pm">
 															</label>
+															<small>Perfect Money</small>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4 collapse">
 															<label>
-																<input id="bitcoin" type="radio" name="radio-button" value="bitcoin" >
+																<input id="bitcoin" type="radio" name="radio-button" value="bitcoin">
 																<img src="{{asset('assets/img/BITCOIN.png') }}" alt="bitcoin">
 															</label>
+															<small>Bitcoin</small>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4 collapse">
 															<label>
-																<input id="dogecoin" type="radio" name="radio-button" value="dogecoin" >
+																<input id="dogecoin" type="radio" name="radio-button" value="dogecoin">
 																<img src="{{asset('assets/img/DOGE.png') }}" alt="dogecoin">
 															</label>
+															<small>Dogecoin</small>
 														</div>
 														<div class="col-lg-3 col-md-6 col-6 mb-4 collapse">
 															<label>
-																<input id="litecoin" type="radio" name="radio-button" value="litecoin" >
+																<input id="litecoin" type="radio" name="radio-button" value="litecoin">
 																<img src="{{asset('assets/img/LITE.png') }}" alt="litecoin">
 															</label>
+															<small>Litecoin</small>
 														</div>
 													</div>
 													<a id="showMoreLink" href="#" onclick="showMoreElements()">Voir plus</a>
@@ -117,59 +125,69 @@
 												{% else %}
 
 													{% if service == 'orange_money_CM' %}
-
-														<label class="mb-4">
-															<input id="om" type="radio" name="radio-button" value="orange_money_CM" checked>
-															<img src="{{ asset('assets/img/OM.png') }}" alt="om">
-														</label>
-
+														<div class="justify-content-center">
+															<label class="mb-4">
+																<input id="om" type="radio" name="radio-button" value="orange_money_CM" checked>
+																<img src="{{ asset('assets/img/OM.png') }}" alt="om">
+															</label>
+															<br/><small>Orange Money CM</small>
+														</div>
 													{% elseif service == 'mtn_mobile_money_CM' %}
-
-														<label class="mb-4">
-															<input id="mtn" type="radio" name="radio-button" value="mtn_mobile_money_CM" checked>
-															<img src="{{ asset('assets/img/MTN.png') }}" alt="mtn">
-														</label>
-
+														<div class="justify-content-center">
+															<label class="mb-4">
+																<input id="mtn" type="radio" name="radio-button" value="mtn_mobile_money_CM" checked>
+																<img src="{{ asset('assets/img/MTN.png') }}" alt="mtn">
+															</label>
+															<br/><small>MTN Mobile Money CM</small>
+														</div>
 													{% elseif service == 'express_union' %}
-
-														<label class="mb-4">
-															<input id="eu" type="radio" name="radio-button" value="express_union" checked>
-															<img src="{{asset('assets/img/EU.png') }}" alt="eu">
-														</label>
-
+														<div class="justify-content-center">
+															<label class="mb-4">
+																<input id="eu" type="radio" name="radio-button" value="express_union" checked>
+																<img src="{{asset('assets/img/EU.png') }}" alt="eu">
+															</label>
+															<br/><small>Express Union</small>
+														</div>
 													{% elseif service == 'paypal' %}
-														<label class="mb-4">
-															<input id="paypal" type="radio" name="radio-button" value="paypal" checked>
-															<img src="{{ asset('assets/img/PAYPAL.png') }}" alt="paypal">
-														</label>
-
+														<div class="justify-content-center">
+															<label class="mb-4">
+																<input id="paypal" type="radio" name="radio-button" value="paypal" checked>
+																<img src="{{ asset('assets/img/PAYPAL.png') }}" alt="paypal">
+															</label>
+															<br/><small>Paypal</small>
+														</div>
 													{% elseif service == 'perfect_money' %}
-
-														<label class="mb-4">
-															<input id="pm" type="radio" name="radio-button" value="perfect_money" checked>
-															<img src="{{ asset('assets/img/PM.png') }} " alt="pm">
-														</label>
-
+														<div class="justify-content-center">
+															<label class="mb-4">
+																<input id="pm" type="radio" name="radio-button" value="perfect_money" checked>
+																<img src="{{ asset('assets/img/PM.png') }} " alt="pm">
+															</label>
+															<br/><small>Perfect Money</small>
+														</div>
 													{% elseif service == 'bitcoin' %}
-
-														<label class="mb-4">
-															<input id="bitcoin" type="radio" name="radio-button" value="bitcoin" checked>
-															<img src="{{asset('assets/img/BITCOIN.png') }}" alt="bitcoin">
-														</label>
-
+														<div class="justify-content-center">
+															<label class="mb-4">
+																<input id="bitcoin" type="radio" name="radio-button" value="bitcoin" checked>
+																<img src="{{asset('assets/img/BITCOIN.png') }}" alt="bitcoin">
+															</label>
+															<br/><small>Bitcoin</small>
+														</div>
 													{% elseif service == 'dogecoin' %}
-														<label class="mb-4">
-															<input id="dogecoin" type="radio" name="radio-button" value="dogecoin" checked>
-															<img src="{{asset('assets/img/DOGE.png') }}" alt="dogecoin">
-														</label>
-
+														<div class="justify-content-center">
+															<label class="mb-4">
+																<input id="dogecoin" type="radio" name="radio-button" value="dogecoin" checked>
+																<img src="{{asset('assets/img/DOGE.png') }}" alt="dogecoin">
+															</label>
+															<br/><small>Dogecoin</small>
+														</div>
 													{% elseif service == 'litecoin' %}
-
-														<label class="mb-4">
-															<input id="litecoin" type="radio" name="radio-button" value="litecoin" checked>
-															<img src="{{asset('assets/img/LITE.png') }}" alt="litecoin">
-														</label>
-
+														<div class="justify-content-center">
+															<label class="mb-4">
+																<input id="litecoin" type="radio" name="radio-button" value="litecoin" checked>
+																<img src="{{asset('assets/img/LITE.png') }}" alt="litecoin">
+															</label>
+															<br/><small>Litecoin</small>
+														</div>
 													{% endif %}
 
 												{% endif %}
@@ -199,10 +217,7 @@
 			</div>
 		</div>
 	</body>
-</html>
-<script>
-
-	const omRadio = document.getElementById('om');
+</html></body></html></body></body></html><script>const omRadio = document.getElementById('om');
 const mtnRadio = document.getElementById('mtn');
 const euRadio = document.getElementById('eu');
 const pmRadio = document.getElementById('pm');
@@ -291,5 +306,4 @@ var elements = document.querySelectorAll('.row > div');
 for (var i = 0; i < elements.length; i++) {
 elements[i].classList.add('show');
 }
-}
-</script>
+}</script>
