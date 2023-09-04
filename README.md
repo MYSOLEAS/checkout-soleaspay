@@ -47,7 +47,7 @@ $params = [
 ];
 
 // Send a POST request to the URL
-$response = Http::post('/checkout', $params);
+$response = Http::post('http://checkout.soleaspay.com/', $params);
 
 ```
 
