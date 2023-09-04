@@ -26,6 +26,7 @@ You should send the following information in the request body to the URL http://
 * __currency__ (XAF, USD, EUR) : This is the currency in which the payment must be made. It must match the default currency of the service selected by the user/customer. 
 * __orderId__ : This is the unique payment reference in the partner's system.
 * __description__ : this is the description or purpose of the initiated payment;
+* __shopName__ : The name of your business.
 * __successUrl__ : This is the URL to which the user/customer will be redirected in case of a successful operation.
 * __failureUrl__ : This is the URL to which the user/customer will be redirected in case of a failed operation.
 
@@ -42,6 +43,7 @@ $params = [
     'description' => 'paiement de la facture',
     'orderId' => 'GBV43A53WD',
     'service' => 'orange_money_CM',
+    'shopName' => 'MYSOLEAS',
     'successUrl' => 'http://exemple.com/success',
     'failureUrl' => 'http://exemple.com/failure'
 ];
