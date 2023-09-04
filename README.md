@@ -19,7 +19,7 @@ To complete the operation, they must click the confirm button to execute the tra
 
 ## Usage
 
-You should send the following information in the request body to the URL /checkout :  
+You should send the following information in the request body to the URL http://checkout.soleaspay.com/ :  
 * __apiKey__ : This is the API key of the [Soleaspay](https://soleaspay.com) business account that will receive the payment. It can be obtained either from the professional account dashboard or by requesting it via email at support@mysoleas.com ;
 * __service__ : If you want the user/customer to choose a service from the list of services(orange_money_CM, mtn_mobile_money_CM, bitcoin, paypal, express_union, perfect_money, litecoin, dogecoin), you should not send a service in your request. However, if you want to define a single service that the user/customer must use, you should send the name of one of our services as mentioned in the list above.
 * __amount__ : This is the amount that the user/customer must pay for an operation.  
