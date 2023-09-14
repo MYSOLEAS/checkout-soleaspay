@@ -27,7 +27,7 @@ class MainController extends AbstractController
         $service  = $data['service'] ?? null;
         $successUrl  = $data['successUrl'] ?? null;
         $failureUrl  = $data['failureUrl'] ?? null;
-        $shopname  = $data['shopname'] ?? null;
+        $shopName  = $data['shopName'] ?? null;
 
 
         $emptyElements = [];
@@ -38,7 +38,7 @@ class MainController extends AbstractController
             'description' => $description,
             'orderId' => $orderId,
             'apiKey' => $apiKey,
-            'shopname' => $shopname,
+            'shopName' => $shopName,
             'successUrl' => $successUrl,
             'failureUrl' => $failureUrl
         ];
@@ -64,7 +64,7 @@ class MainController extends AbstractController
         setcookie('service', $service);
         setcookie('successUrl', $successUrl);
         setcookie('failureUrl', $failureUrl);
-        setcookie('failureUrl', $shopname);
+        setcookie('shopName', $shopName);
 
         return $this->render('main/index.html.twig', [
             'amount' => $amount,
@@ -72,7 +72,7 @@ class MainController extends AbstractController
             'orderId' => $orderId,
             'currency' => $currency,
             'service' => $service,
-            'shopname' => $shopname
+            'shopName' => $shopName
         ]);
     }
 
@@ -90,6 +90,8 @@ class MainController extends AbstractController
                 'perfect_money' => 8,
                 'litecoin' => 10,
                 'dogecoin' => 11,
+                'visa' => 23,
+                'mastercard' => 23,
             ];
 
             $operation = 2;
@@ -120,14 +122,32 @@ class MainController extends AbstractController
                     'amount' => $_COOKIE['amount'] ?? null,
                     'currency' => $_COOKIE['currency'] ?? null,
                     'order_id' => $_COOKIE['orderId'] ?? null,
+                    'success_url' => $_COOKIE['successUrl'] ?? null,
+                    'failure_url' => $_COOKIE['failureUrl'] ?? null,
                 ],
             ]);
         }
 
         $responseContent = json_decode($response->getContent(), true);
-
-        if ($responseContent['success']) {
-            $redirectUrl = $_COOKIE['successUrl'] ?? '/';
+        if ($response->getStatusCode() === 500) {
+            return $this->redirect($_COOKIE['failureUrl'] ?? '/');
+        } elseif ($responseContent['message'] === 'Invalid request, Order Id already used') {
+            return $this->render('main/error_order_id.html.twig', [
+                'orderId' => $_COOKIE['orderId'] ?? null,
+            ]);
+        } elseif ($responseContent['success']) {
+            if ($service == 'paypal' || $service == 'perfect_money' || $service == 'visa' || $service == 'mastercard') {
+                $redirectUrl = $responseContent['data']['payLink'];
+            } elseif ($service == 'orange_money_CM' || $service == 'mtn_mobile_money_CM' || $service == 'express_union') {
+                $redirectUrl = $_COOKIE['successUrl'] ?? '/';
+            } elseif ($service == 'bitcoin' || $service == 'litecoin' || $service == 'dogecoin') {
+                return $this->render('main/crypto.html.twig', [
+                    'wallet' => $responseContent['data']['wallet'],
+                    'payId' => $responseContent['data']['payId'],
+                    'value' => $responseContent['data']['value'],
+                    'currency' => $responseContent['data']['currency'],
+                ]);
+            }
         } else {
             $redirectUrl = $_COOKIE['failureUrl'] ?? '/';
         }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="{{ asset('assets/img/sopay.png') }}">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
+
+		{# Feuilles de styles #}
+		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"> {% block stylesheets %}{% endblock %}
+		<link
+		rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
+
+		{# Fichiers Js #}
+		<script type='text/javascript' src="{{asset('assets/js/jquery.min.js')}}" defer></script>
+		<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" defer></script>
+		{% block javascripts %}{% endblock %}
+		<script type='text/javascript' src="{{asset('assets/js/scripts.js')}}" defer></script>
+
+	</head>
+
+	{# {% block body %}{% endblock %} #}
+	<body>
+		<div class="container card-0 justify-content-center">
+			<div class="card-body px-sm-4 px-0">
+				<div class="row justify-content-center round">
+					<div class="col-lg-10 col-md-12">
+						<div class="card shadow-lg card-1">
+							<div class="card-body inner-card">
+								<div class="row justify-content-center">
+									<div class="col-lg-10 col-md-6 col-sm-12 ">
+										<div class="row justify-content-end">
+												<h4 class="mb-3 text-center" style="color:#fc7001; font-weight:bold;">Transaction details</h4>
+												<h6 class="mb-3 text-center" style="color:#488ec1;"><strong>Transfer the amount to the wallet below to complete the payment</strong></h6>
+												<p>
+													<strong>Payee Wallet</strong>
+													:
+													{{ wallet }}
+												</p>
+												<p>
+													<strong>Pay ID</strong>
+													:
+													{{ payId }}
+												</p>
+												<p>
+													<strong>Amount</strong>
+													:
+													{{ value }}
+													{{ currency }}
+												</p>
+											</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

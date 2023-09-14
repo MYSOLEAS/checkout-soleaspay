@@ -19,9 +19,9 @@ To complete the operation, they must click the confirm button to execute the tra
 
 ## Usage
 
-You should send the following information in the request body to the URL http://checkout.soleaspay.com/ :  
+You should send the following information in the request body to the URL https://checkout.soleaspay.com/ :  
 * __apiKey__ : This is the API key of the [Soleaspay](https://soleaspay.com) business account that will receive the payment. It can be obtained either from the professional account dashboard or by requesting it via email at support@mysoleas.com ;
-* __service__ : If you want the user/customer to choose a service from the list of services(orange_money_CM, mtn_mobile_money_CM, bitcoin, paypal, express_union, perfect_money, litecoin, dogecoin), you should not send a service in your request. However, if you want to define a single service that the user/customer must use, you should send the name of one of our services as mentioned in the list above.
+* __service__ : If you want the user/customer to choose a service from the list of services(orange_money_CM, mtn_mobile_money_CM,  paypal, express_union, perfect_money, visa, master, mastercard, bitcoin, litecoin, dogecoin), you should not send a service in your request. However, if you want to define a single service that the user/customer must use, you should send the name of one of our services as mentioned in the list above.
 * __amount__ : This is the amount that the user/customer must pay for an operation.  
 * __currency__ (XAF, USD, EUR) : This is the currency in which the payment must be made. It must match the default currency of the service selected by the user/customer. 
 * __orderId__ : This is the unique payment reference in the partner's system.
@@ -49,7 +49,7 @@ $params = [
 ];
 
 // Send a POST request to the URL
-$response = Http::post('http://checkout.soleaspay.com/', $params);
+$response = Http::post('https://checkout.soleaspay.com/', $params);
 
 ```
 
