@@ -13,7 +13,7 @@ We invest a significant amount of resources in creating plugins to facilitate th
 
 When the user accesses the Checkout page, they can view the transaction details, such as the amount to be paid, the description, and the order ID.
 
-They are prompted to choose a service from the list of services if you have not defined the service to use among the services in this list. They will then need to enter their phone number for Orange Money CM, MTN Mobile Money CM, and Express Union services. For PayPal-type service, they will be redirected to PayPal's payment page.
+They are prompted to choose a service from the list of services if you have not defined the service to use among the services in this list. They will then need to enter their phone number for Orange Money CM, MTN Mobile Money CM, and Express Union services, for the PayPal service, you must enter your PayPal email and for cryptocurrencies we will provide you with a wallet to make the transfer
 
 To complete the operation, they must click the confirm button to execute the transaction. If the transaction is successful, the user is redirected to a payment confirmation page. Otherwise, they are redirected to an error page.
 
