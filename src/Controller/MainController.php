@@ -122,6 +122,7 @@ class MainController extends AbstractController
                     'amount' => $_COOKIE['amount'] ?? null,
                     'currency' => $_COOKIE['currency'] ?? null,
                     'order_id' => $_COOKIE['orderId'] ?? null,
+                    'description' => $_COOKIE['description'] ?? null,
                     'success_url' => $_COOKIE['successUrl'] ?? null,
                     'failure_url' => $_COOKIE['failureUrl'] ?? null,
                 ],
